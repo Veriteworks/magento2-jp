@@ -13,6 +13,6 @@
         <plugin name="modify_round" type="CommunityEngineering\CurrencyPrecision\Plugin\Directory\Model\CurrencyRounding"/>
     </type>
     <type name="Magento\Framework\Locale\Format">
-        <plugin name="modify_price_format" type="CommunityEngineering\CurrencyPrecision\Plugin\Locale\Format\ReplaceGroupSymbol" />
+        <plugin name="locale_number_format" type="CommunityEngineering\CurrencyPrecision\Plugin\Locale\LocalizedFormat"/>
     </type>
 </config>
