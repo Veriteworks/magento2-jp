@@ -106,8 +106,12 @@ define([
 
                         updateRegion(regionSelectComponent, regionTextComponent, data.region || '');
                         cityComponent.value(data.city || '');
-                        updateStreet(street1Component, data.street1 || '');
-                        updateStreet(street2Component, data.street2 || '');
+                        if(typeof street2Component !== 'undefined') {
+                            updateStreet(street1Component, data.street1 || '');
+                            updateStreet(street2Component, data.street2 || '');
+                        }else{
+                            updateStreet(street1Component, (data.street1 || '') + (data.street2 || ''));
+                        }
 
                         postalCodeComponent.warn(null);
                         fullScreenLoader.stopLoader();
