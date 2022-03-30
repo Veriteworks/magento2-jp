@@ -7,12 +7,12 @@
 <tr class="row location">
     <td class="col col-location-details location-details">
         <p class="location-name">
-            <text args="location.name"/>
+            <text args="location.name"></text>
         </p>
         <p class="location-address">
-            <text args="location.country"/><br/>
-            <text args="location.postcode"/> <span text="location.region"></span><text args="location.city"/><br/>
-            <text args="location.street"/><br/>
+            <text args="location.country"></text><br/>
+            <text args="location.postcode"></text> <span text="location.region"></span><text args="location.city"></text><br/>
+            <text args="location.street"></text><br/>
             <a if="location.telephone" attr="'href': 'tel:' + location.telephone" text="location.telephone"></a>
         </p>
         <p if="location.description" class="location-description" html="location.description"></p>
@@ -22,12 +22,12 @@
             <button type="button"
                     class="action secondary action-select-shipping-item"
                     click="$parent.selectPickupLocation.bind($parent, $data)">
-                <translate args="'Ship Here'"/>
+                <translate args="'Ship Here'"></translate>
             </button>
         </div>
         <div class="location-selected" if="$parent.isPickupLocationSelected($data)">
             <button type="button" class="action secondary" disabled>
-                <span translate="'Selected'"/>
+                <span translate="'Selected'"></span>
             </button>
         </div>
     </td>
