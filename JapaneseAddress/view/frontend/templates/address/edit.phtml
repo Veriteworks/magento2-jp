@@ -211,7 +211,7 @@
                 "postcodeId": "#zip",
                 "form": "#form-validate",
                 "regionJson": <?= /* @noEscape */ $regionJson ?>,
-                "defaultRegion": <?= /* @noEscape */ $block->getRegionId() ?>,
+                "defaultRegion": "<?= (int) $block->getRegionId() ?>",
                 "countriesWithOptionalZip": <?= /* @noEscape */ $countriesWithOptionalZip ?>
             }
         }
