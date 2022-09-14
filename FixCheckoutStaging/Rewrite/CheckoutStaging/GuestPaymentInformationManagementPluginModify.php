@@ -1,13 +1,13 @@
 <?php
-namespace CommunityEngineering\JapaneseAddress\Rewrite\CheckoutStaging;
+namespace CommunityEngineering\FixCheckoutStaging\Rewrite\CheckoutStaging;
 
 use Magento\Checkout\Api\GuestPaymentInformationManagementInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
-use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Staging\Model\VersionManager;
 
 /**
