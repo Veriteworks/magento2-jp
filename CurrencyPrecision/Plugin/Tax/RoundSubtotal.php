@@ -43,9 +43,9 @@ class RoundSubtotal
             $baseCurrency = $quote->getStore()->getBaseCurrencyCode();
         }
 
-        $total->setBaseTotalAmount('subtotal', $this->round($baseCurrency, $total->getTotalAmount('subtotal')));
-        $total->setBaseTotalAmount('tax', $this->round($baseCurrency, $total->getTotalAmount('tax')));
-        $total->setBaseTotalAmount('discount_tax_compensation', $this->round($baseCurrency, $total->getTotalAmount('discount_tax_compensation')));
+        $total->setBaseTotalAmount('subtotal', $this->round($baseCurrency, $total->getBaseTotalAmount('subtotal')));
+        $total->setBaseTotalAmount('tax', $this->round($baseCurrency, $total->getBaseTotalAmount('tax')));
+        $total->setBaseTotalAmount('discount_tax_compensation', $this->round($baseCurrency, $total->getBaseTotalAmount('discount_tax_compensation')));
 
         $total->setBaseTaxAmount($this->round($baseCurrency, $total->getBaseTaxAmount()));
         $total->setBaseSubtotalTotalInclTax(
