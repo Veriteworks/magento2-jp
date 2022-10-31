@@ -35,8 +35,8 @@ class RoundDiscount
     public function afterCalculate(DiscountInterface $subject, $result, $rule, $item, $qty)
     {
         $quote = $item->getQuote();
-        $baseCurrency = $quote->getBaseCurrencyCode();
-        $quoteCurrency = $quote->getQuoteCurrencyCode();
+        $baseCurrency = (string)$quote->getBaseCurrencyCode();
+        $quoteCurrency = (string)$quote->getQuoteCurrencyCode();
 
         $result->setAmount($this->currencyRounding->round($quoteCurrency, $result->getAmount()));
         $result->setBaseAmount($this->currencyRounding->round($baseCurrency, $result->getBaseAmount()));

@@ -1,0 +1,32 @@
+{
+    "name": "community-engineering/module-fix-checkout-staging",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "description": "Adobe commerce extension for fixing checkout staging issue.",
+    "authors":[
+        {
+            "name": "Hirokazu Nishi",
+            "email": "nishi@veriteworks.co.jp",
+            "homepage": "https://veriteworks.co.jp/",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": "~7.4.0||~8.1.0",
+        "magento/framework": "^103.0.0",
+        "magento/module-checkout-staging": "^100.4.0",
+        "lib-libxml": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "CommunityEngineering\\FixCheckoutStaging\\": ""
+        }
+    }
+}
