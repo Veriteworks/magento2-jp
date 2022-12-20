@@ -40,7 +40,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp() :void
     {
         $entityFactoryMock = $this->getMockBuilder(EntityFactory::class)->disableOriginalConstructor()->getMock();
         $loggerMock = $this->getMockBuilder(LoggerInterface::class)->disableOriginalConstructor()->getMock();

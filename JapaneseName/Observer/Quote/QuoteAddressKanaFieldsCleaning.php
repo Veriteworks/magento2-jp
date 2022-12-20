@@ -30,7 +30,7 @@ class QuoteAddressKanaFieldsCleaning implements ObserverInterface
             throw new \LogicException('Current Kana implementation expects quote address to be data object.');
         }
 
-        $address->unsetData('firstnamkana');
-        $address->unsetData('lastnamkana');
+        $address->unsetData('firstnamekana');
+        $address->unsetData('lastnamekana');
     }
 }
