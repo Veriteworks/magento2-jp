@@ -1,0 +1,33 @@
+{
+    "name": "community-engineering/module-japanese-invoice",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "description": "Magento2 extension for Japanese invoice regulation.",
+    "authors":[
+        {
+            "name": "Hirokazu Nishi",
+            "email": "nishi@veriteworks.co.jp",
+            "homepage": "https://veriteworks.co.jp/",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": "~7.4.0||~8.1.0",
+        "magento/framework": "^102.0.0||^103.0.0",
+        "magento/module-store": "^101.0.0||^102.0.0",
+        "magento/module-directory": "^100.3.0||^100.4.0",
+        "community-engineering/module-currency-precision": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "CommunityEngineering\\CurrencyPrecision\\": ""
+        }
+    }
+}

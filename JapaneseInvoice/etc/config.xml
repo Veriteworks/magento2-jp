@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <tax>
+            <japanese_invoice>
+                <show_subtotal_by_tax_rate>1</show_subtotal_by_tax_rate>
+                <show_in_order>0</show_in_order>
+                <show_in_invoice>0</show_in_invoice>
+                <show_in_creditmemo>0</show_in_creditmemo>
+            </japanese_invoice>
+        </tax>
+        <general>
+            <store_address_template>
+                <text><![CDATA[{{depend name}}{{var name}}{{/depend}}{{depend postcode}}
+〒{{var postcode}}{{/depend}}
+{{depend region}}{{var region}}{{/depend}}{{depend city}}{{var city}}{{/depend}}{{depend street_line1}}{{var street_line1}}{{/depend}}{{depend street_line2}} {{var street_line1}}{{/depend}}{{depend telephone}}
+T: {{var telephone}}{{/depend}} {{depend registration_number}}登録番号: {{var registration_number}}{{/depend}}]]></text>
+                <oneline><![CDATA[{{depend name}}{{var name} {{/depend}}{{address_format}}]]></oneline>
+                <html><![CDATA[{{depend name}}{{var name}}<br/>{{/depend}}
+{{depend postcode}}〒{{var postcode}}<br/>{{/depend}}
+{{depend region}}{{var region}}{{/depend}}{{depend city}}{{var city}}{{/depend}}{{depend street_line1}}{{var street_line1}}{{/depend}}{{depend street_line2}} {{var street_line1}}{{/depend}}
+{{depend telephone}}<br/>T: {{var telephone}}{{/depend}}{{depend registration_number}}<br/>登録番号: {{var registration_number}}{{/depend}}]]></html>
+            </store_address_template>
+        </general>
+    </default>
+</config>

@@ -1,0 +1,7 @@
+<?php /** @var $block \CommunityEngineering\JapaneseInvoice\Block\Info\Order */?>
+<?php /** @var $escaper \Magento\Framework\Escaper */?>
+<?php if($block->canShow()):?>
+<div class="registration-number">
+    <?=$escaper->escapeHtml(__('Registration Number:'))?><?=$escaper->escapeHtml($block->getRegistrationNumber())?>
+</div>
+<?php endif;?>

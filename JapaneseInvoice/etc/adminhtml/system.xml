@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="tax" translate="label" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="0">
+            <group id="japanese_invoice" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Japanese invoice regulation</label>
+                <field id="show_subtotal_by_tax_rate" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show subtotal by tax rate</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>tax/japanese_invoice/show_subtotal_by_tax_rate</config_path>
+                </field>
+                <field id="reduction_tax_rate" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Reducted tax rate</label>
+                    <source_model>CommunityEngineering\JapaneseInvoice\Model\Config\Source\TaxRate</source_model>
+                    <config_path>tax/japanese_invoice/reduction_tax_rate</config_path>
+                </field>
+                <field id="show_in_order" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show in order view</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>tax/japanese_invoice/show_in_order</config_path>
+                </field>
+                <field id="show_in_invoice" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show in invoice view</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>tax/japanese_invoice/show_in_invoice</config_path>
+                </field>
+                <field id="show_in_creditmemo" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show in credit memo view</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>tax/japanese_invoice/show_in_creditmemo</config_path>
+                </field>
+            </group>
+        </section>
+        <section id="general">
+            <group id="store_information">
+                <field id="registration_number" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Registration number</label>
+                    <config_path>general/store_information/registration_number</config_path>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>

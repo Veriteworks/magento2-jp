@@ -1,0 +1,20 @@
+.sales-order-view, .sales-order-invoice, .sales-order-creditmemo,
+.sales-order-print, .sales-order-printinvoice, .sales-order-printcreditmemo {
+    .table-order-items {
+        td.name {
+            position: relative;
+            span.reduction-rate-product-sign {
+                position: absolute;
+                top: 1.2em;
+                right: 0.2em;
+            }
+        }
+        tfoot {
+            tr.subtotals, tr.reduction-info {
+                td.label {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
