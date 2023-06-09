@@ -41,6 +41,25 @@ class Subtotal extends \Magento\Framework\View\Element\Template
             ]);
         $parent = $this->getParentBlock();
         $parent->addTotal($taxTotal, 'last');
+
+        $this->initGiftWrapping();
+    }
+
+    public function initGiftWrapping()
+    {
+        $parent = $this->getParentBlock();
+        $source = $parent->getSource();
+        if ($source->getGiftwrappingFee() || $this->getActuralOrderData()->getGiftwrappingFee()) {
+            $giftwrappingfee = $source->getGiftwrappingFee() ?: $this->getActuralOrderData()->getGiftwrappingFee();
+            $giftwrapping = $this->objectFactory->create()
+                ->setData([
+                    'code' => 'giftwrappingfee',
+                    'strong' => false,
+                    'value' => $giftwrappingfee,
+                    'label' => __('Gift Wrapping Fee'),
+                ]);
+            $parent->addTotal($giftwrapping, 'shipping');
+        }
     }
 
     /**
@@ -98,5 +117,14 @@ class Subtotal extends \Magento\Framework\View\Element\Template
     public function getOrder()
     {
         return $this->order;
+    }
+
+    public function getActuralOrderData()
+    {
+        $parent = $this->getParentBlock();
+        /** @var Order $order */
+        $order = $parent->getSource()->getOrder();
+        $id = $order->getIncrementId();
+        return $order->loadByIncrementId($id);
     }
 }

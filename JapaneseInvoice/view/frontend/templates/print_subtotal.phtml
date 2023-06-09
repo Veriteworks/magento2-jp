@@ -1,0 +1,17 @@
+<?php /** @var $block \CommunityEngineering\JapaneseInvoice\Block\Sales\PrintOrder\Subtotal */?>
+<?php /** @var $escaper \Magento\Framework\Escaper */?>
+<?php $totals = $block->getTotals();?>
+<?php /** @var $order \Magento\Sales\Model\Order */?>
+<?php $order = $block->getOrder();?>
+<?php $colspan = $block->getColspanData();?>
+<?php foreach ($totals as $rate => $total):?>
+    <tr class="subtotals">
+        <td class="label" colspan="<?= $colspan ?>">
+            <?=__('Subtotal for tax rate %1% %2', $rate, $order->formatPrice($total['total']))?>
+            <?=__('Tax amount is %1', $order->formatPrice($total['tax_amount']))?>
+        </td>
+    </tr>
+<?php endforeach;?>
+<tr class="reduction-info">
+    <td class="label" colspan="<?= $colspan ?>"><?=$escaper->escapeHtml(__('* is reducted tax rate item.'))?></td>
+</tr>

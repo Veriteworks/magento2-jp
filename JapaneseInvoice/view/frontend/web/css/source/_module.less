@@ -18,3 +18,11 @@
         }
     }
 }
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sales-order-printcreditmemo {
+        .table-order-items.creditmemo .col.rowtotal{
+            text-align: right;
+        }
+    }
+}

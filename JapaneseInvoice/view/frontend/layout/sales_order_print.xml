@@ -6,7 +6,7 @@
         </referenceContainer>
         <referenceBlock name="order_totals">
 <!--            <referenceBlock name="tax" remove="true"/>-->
-            <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\Order\Subtotal" name="invoice_subtotal" template="CommunityEngineering_JapaneseInvoice::subtotal.phtml" after="-"/>
+            <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\PrintOrder\Subtotal" name="print_subtotal" template="CommunityEngineering_JapaneseInvoice::print_subtotal.phtml" after="-"/>
         </referenceBlock>
         <referenceBlock name="additional.product.info">
             <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\Order\ReductionRateSign" name="reduction.rate.sign" template="CommunityEngineering_JapaneseInvoice::reduction_rate_sign.phtml"/>
