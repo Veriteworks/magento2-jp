@@ -82,13 +82,58 @@ class Subtotal extends \Magento\Framework\View\Element\Template
             $subtotals[$taxRate]['base_total'] += $item->getBaseRowTotalInclTax() - $item->getBaseDiscountAmount();
             $subtotals[$taxRate]['tax_amount'] += $item->getTaxAmount();
             $subtotals[$taxRate]['base_tax_amount'] += $item->getBaseTaxAmount();
-
         }
 
-        ksort($subtotals, SORT_NUMERIC);
 
         //todo: collect handling fees like cod, wrapping...
+        $coupon = (float)$order->getDiscountAmount();
+        $cod = (float)$order->getVwCodFee();
+        $wrapping = (float)$order->getGiftwrappingFee();
+        $shipping = (float)$order->getShippingAmount();
+
+        if ($coupon < 0) {
+            if (!array_key_exists($coupon, $subtotals)) {
+                $subtotals[$coupon] = [
+                    'coupon' => 0,
+                ];
+            }
+            $subtotals[$coupon]['coupon'] = $coupon;
+        }
+
+        if ($cod > 0) {
+            if (!array_key_exists($cod, $subtotals)) {
+                $subtotals[$cod] = [
+                    'veriteworks_cod_excl_tax' => 0,
+                ];
+            }
+            $subtotals[$cod]['veriteworks_cod_excl_tax'] = $cod;
+        }
+
+        //todo: check point rule order or product and collect point
+
+        if ($shipping > 0) {
+            if (!array_key_exists($shipping, $subtotals)) {
+                $subtotals[$shipping] = [
+                    'shipping_amount' => 0,
+                    'shipping_discount' => 0,
+                ];
+            }
+            $subtotals[$shipping]['shipping_amount'] = (float)$order->getShippingAmount();
+            $subtotals[$shipping]['shipping_discount'] = (float)$order->getShippingDiscountAmount();
+        }
+
+        if ($wrapping > 0) {
+            if (!array_key_exists($wrapping, $subtotals)) {
+                $subtotals[$wrapping] = [
+                    'gift_wrapping_value' => 0,
+                ];
+            }
+            $subtotals[$wrapping]['gift_wrapping_value'] = $wrapping;
+        }
+
         //todo: re-calculate g.t. based discount
+
+        ksort($subtotals, SORT_NUMERIC);
         return $subtotals;
     }
 
