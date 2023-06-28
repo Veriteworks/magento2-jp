@@ -1,0 +1,18 @@
+<?php /** @var $block \Magento\Sales\Block\Order\Info */?>
+<?php /** @var $escaper \Magento\Framework\Escaper */?>
+<?php
+$order = $block->getOrder();
+$id = $order->getIncrementId();
+$actualOrder = $order->loadByIncrementId($id);
+$invoice = $actualOrder->getInvoiceCollection();
+?>
+<div class="invoice-publish-date">
+    <?php foreach ($invoice as $item):?>
+    <span class="label">
+        <?=$escaper->escapeHtml(__('Publish Date:'))?>
+    </span>
+    <span>
+        <?=$escaper->escapeHtml($block->formatDate($item['created_at'], \IntlDateFormatter::LONG))?>
+    </span>
+    <?php endforeach;?>
+</div>

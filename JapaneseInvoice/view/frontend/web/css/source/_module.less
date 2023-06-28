@@ -16,6 +16,38 @@
                 }
             }
         }
+        .subtotals, .tax, .reduction-info {
+            background-color: white;
+            text-align: right;
+            .amount {
+                background-color: white;
+            }
+            .mark {
+                background-color: white;
+            }
+        }
+        .subtotals {
+            border-top: 1px solid #e9e9e9;
+        }
+    }
+    .invoice-publish-date, .creditmemo-publish-date, .shipment-publish-date {
+        float: right;
+    }
+    .shipment-shipping-date, .store-info {
+        float: none;
+        display: none;
+    }
+    #maincontent .page-title-wrapper .order-date {
+        font-size: 1.4rem;
+        .label {
+            display: inline-block;
+        }
+    }
+}
+
+.sales-order-printinvoice, .sales-order-printcreditmemo {
+    .shipment-shipping-date, .store-info {
+        display: block;
     }
 }
 
@@ -23,6 +55,26 @@
     .sales-order-printcreditmemo {
         .table-order-items.creditmemo .col.rowtotal{
             text-align: right;
+        }
+    }
+    .sales-order-printinvoice, .sales-order-printcreditmemo {
+        .shipment-shipping-date {
+            float: left;
+        }
+        .store-info {
+            float: right;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .sales-order-view, .sales-order-invoice, .sales-order-creditmemo,
+    .sales-order-print, .sales-order-printinvoice, .sales-order-printcreditmemo {
+        .table-order-items {
+            .subtotals, .tax, .reduction-info {
+                .amount {
+                    text-align: left;
+                }
+            }
         }
     }
 }

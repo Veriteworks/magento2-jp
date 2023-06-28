@@ -3,3 +3,8 @@
 "Tax amount is %1","(内消費税 %1)"
 "*","※"
 "* is reducted tax rate item.","※ 軽減税率対象"
+"Publish Date:","発行日:"
+"Shipping Date:","出荷完了日:"
+"(Publisher)","(発行元)"
+"Subtotal for tax rate %1","小計（%1%対象）"
+"Tax amount(%1)","内消費税(%1%対象)"

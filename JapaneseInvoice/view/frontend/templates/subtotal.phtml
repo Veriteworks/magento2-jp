@@ -5,12 +5,26 @@
 <?php $order = $block->getOrder();?>
 <?php foreach ($totals as $rate => $total):?>
     <tr class="subtotals">
-        <td class="label" colspan="5">
-            <?=__('Subtotal for tax rate %1% %2', $rate, $order->formatPrice($total['total']))?>
-            <?=__('Tax amount is %1', $order->formatPrice($total['tax_amount']))?>
+        <th class="mark" colspan="4" scope="row">
+            <?=__('Subtotal for tax rate %1', $rate)?>
+        </th>
+        <td class="amount">
+            <span>
+                <?= $order->formatPrice($total['total']) ?>
+            </span>
+        </td>
+    </tr>
+    <tr class="tax">
+        <th class="mark" colspan="4" scope="row">
+            <?=__('Tax amount(%1)', $rate)?>
+        </th>
+        <td class="amount">
+            <span>
+                <?= $order->formatPrice($total['tax_amount']) ?>
+            </span>
         </td>
     </tr>
 <?php endforeach;?>
 <tr class="reduction-info">
-    <td class="label" colspan="5"><?=$escaper->escapeHtml(__('* is reducted tax rate item.'))?></td>
+    <td class="mark" colspan="5"><?=$escaper->escapeHtml(__('* is reducted tax rate item.'))?></td>
 </tr>

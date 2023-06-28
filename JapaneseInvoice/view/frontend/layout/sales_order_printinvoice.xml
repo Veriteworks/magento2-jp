@@ -2,11 +2,13 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="page.main.title">
-            <block class="CommunityEngineering\JapaneseInvoice\Block\Info\Order" name="registration_number" after="order.date" template="CommunityEngineering_JapaneseInvoice::registration_number.phtml"/>
+            <block class="Magento\Sales\Block\Order\Info" name="publish_date" before="order.status" template="CommunityEngineering_JapaneseInvoice::invoice/publish_date.phtml"/>
+            <block class="Magento\Sales\Block\Order\Info" name="shipping_date" after="order.date" template="CommunityEngineering_JapaneseInvoice::shipment_date.phtml"/>
+            <block class="CommunityEngineering\JapaneseInvoice\Block\Info\Order" name="registration_number" after="shipping_date" template="CommunityEngineering_JapaneseInvoice::registration_number.phtml"/>
         </referenceContainer>
         <referenceBlock name="invoice_totals">
-            <!--            <referenceBlock name="tax" remove="true"/>-->
-            <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\PrintOrder\Subtotal" name="print_subtotal" template="CommunityEngineering_JapaneseInvoice::print_subtotal.phtml" after="-"/>
+            <referenceBlock name="tax" remove="true"/>
+            <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\Invoice\Subtotal" name="invoice_subtotal" template="CommunityEngineering_JapaneseInvoice::subtotal.phtml" after="-"/>
         </referenceBlock>
         <referenceBlock name="additional.product.info">
             <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\Order\ReductionRateSign" name="reduction.rate.sign" template="CommunityEngineering_JapaneseInvoice::reduction_rate_sign.phtml"/>
