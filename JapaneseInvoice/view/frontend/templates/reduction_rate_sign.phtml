@@ -1,7 +1,7 @@
 <?php /** @var $block \CommunityEngineering\JapaneseInvoice\Block\Sales\Order\ReductionRateSign */?>
 <?php /** @var $escaper \Magento\Framework\Escaper */?>
-<?php if($sign = $block->showReductionRateSign()) :?>
+<?php if ($sign = $block->showReductionRateSign()):?>
 <span class="reduction-rate-product-sign">
-<?= $escaper->escapeHtml(__($sign));?>
+    <?= $escaper->escapeHtml(__($sign));?>
 </span>
 <?php endif;?>

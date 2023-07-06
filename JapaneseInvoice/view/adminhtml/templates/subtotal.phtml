@@ -6,8 +6,8 @@
 <?php foreach ($totals as $rate => $total):?>
     <tr class="subtotals">
         <td class="label" colspan="2">
-            <?=__('Subtotal for tax rate %1% %2', $rate, $order->formatPrice($total['total']))?>
-            <?=__('Tax amount is %1', $order->formatPrice($total['tax_amount']))?>
+            <?= $block->escapeHtml(__('Subtotal for tax rate %1% %2', $rate, $order->formatPrice($total['total']))) ?>
+            <?= $block->escapeHtml(__('Tax amount is %1', $order->formatPrice($total['tax_amount']))) ?>
         </td>
     </tr>
 <?php endforeach;?>

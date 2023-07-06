@@ -5,4 +5,8 @@
         <plugin name="add_registration_number"
                 type="CommunityEngineering\JapaneseInvoice\Plugin\Store\Information\AddRegistrationNumber"/>
     </type>
+    <preference for="Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice" type="CommunityEngineering\JapaneseInvoice\Model\Order\Pdf\Items\Invoice\DefaultInvoice" />
+    <preference for="Magento\Sales\Model\Order\Pdf\Invoice" type="CommunityEngineering\JapaneseInvoice\Model\Order\Pdf\Invoice" />
+    <preference for="Magento\Sales\Model\Order\Pdf\Items\Creditmemo\DefaultCreditmemo" type="CommunityEngineering\JapaneseInvoice\Model\Order\Pdf\Items\Creditmemo\DefaultCreditmemo" />
+    <preference for="Magento\Sales\Model\Order\Pdf\Creditmemo" type="CommunityEngineering\JapaneseInvoice\Model\Order\Pdf\Creditmemo" />
 </config>

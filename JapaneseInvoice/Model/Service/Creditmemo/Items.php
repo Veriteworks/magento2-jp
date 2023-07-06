@@ -8,14 +8,23 @@ use \Magento\Sales\Model\Order\Creditmemo\Item;
 
 class Items
 {
+    /**
+     * @var mixed
+     */
     private $source;
 
+    /**
+     * Collect
+     *
+     * @param array $result
+     * @return void
+     */
     public function collect(array &$result)
     {
         $items = $this->source->getAllItems();
         //item row amount calculation
         /** @var Item $item */
-        foreach($items as $item) {
+        foreach ($items as $item) {
             $taxRate = (int)$item->getTaxPercent();
             if (!array_key_exists($taxRate, $result)) {
                 $result[$taxRate] = [
@@ -36,6 +45,12 @@ class Items
         ksort($result, SORT_NUMERIC);
     }
 
+    /**
+     * Set Source
+     *
+     * @param mixed $source source
+     * @return $this
+     */
     public function setSource($source)
     {
         $this->source = $source;

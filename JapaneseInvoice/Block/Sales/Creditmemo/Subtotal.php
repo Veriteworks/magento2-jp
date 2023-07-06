@@ -15,9 +15,14 @@ class Subtotal extends \Magento\Framework\View\Element\Template
      */
     private $objectFactory;
 
+    /**
+     * @var Order
+     */
     private $order;
 
     /**
+     * Constructor.
+     *
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\DataObjectFactory $objectFactory
      * @param array $data
@@ -31,6 +36,11 @@ class Subtotal extends \Magento\Framework\View\Element\Template
         $this->objectFactory = $objectFactory;
     }
 
+    /**
+     * Init Totals
+     *
+     * @return void
+     */
     public function initTotals()
     {
         $taxTotal = $this->objectFactory->create()
@@ -44,6 +54,8 @@ class Subtotal extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get Totals
+     *
      * @return array
      */
     public function getTotals()
@@ -61,7 +73,7 @@ class Subtotal extends \Magento\Framework\View\Element\Template
 
         //item row amount calculation
         /** @var Order\Creditmemo\Item $item */
-        foreach($allItems as $item) {
+        foreach ($allItems as $item) {
             $taxRate = (int)$item->getOrderItem()->getTaxPercent();
             if (!array_key_exists($taxRate, $subtotals)) {
                 $subtotals[$taxRate] = [
@@ -72,7 +84,7 @@ class Subtotal extends \Magento\Framework\View\Element\Template
                 ];
             }
             if ($item->getBaseDiscountAmount() > 0) {
-                if(!array_key_exists($taxRate, $discounts)) {
+                if (!array_key_exists($taxRate, $discounts)) {
                     $discounts[$taxRate] = [
                         'discount' => 0,
                         'base_discount' => 0,
@@ -95,6 +107,11 @@ class Subtotal extends \Magento\Framework\View\Element\Template
         return $subtotals;
     }
 
+    /**
+     * Get Order
+     *
+     * @return Order
+     */
     public function getOrder()
     {
         return $this->order;

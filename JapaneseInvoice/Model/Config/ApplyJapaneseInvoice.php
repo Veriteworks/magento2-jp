@@ -14,6 +14,8 @@ class ApplyJapaneseInvoice
     private $scopeConfig;
 
     /**
+     * Constructor.
+     *
      * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(

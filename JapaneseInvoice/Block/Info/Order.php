@@ -9,6 +9,9 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Order extends Template
 {
+    /**
+     * @var Config
+     */
     private $config;
 
     /**
@@ -16,6 +19,14 @@ class Order extends Template
      */
     protected $scopeConfig;
 
+    /**
+     * Constructor.
+     *
+     * @param Template\Context $context
+     * @param Config $config
+     * @param ScopeConfigInterface $scopeConfig
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         Config $config,
@@ -27,21 +38,41 @@ class Order extends Template
         $this->scopeConfig = $scopeConfig;
     }
 
+    /**
+     * Get Registration Number
+     *
+     * @return string
+     */
     public function getRegistrationNumber()
     {
         return $this->config->getNumber();
     }
 
+    /**
+     * Can Show
+     *
+     * @return int
+     */
     public function canShow()
     {
         return $this->config->showInOrder();
     }
 
+    /**
+     * Get Store Zip
+     *
+     * @return mixed
+     */
     public function getStoreZip()
     {
         return $this->scopeConfig->getValue('general/store_information/postcode');
     }
 
+    /**
+     * Get Store Address
+     *
+     * @return string
+     */
     public function getStoreAddress()
     {
         $city = $this->scopeConfig->getValue('general/store_information/city');
@@ -50,6 +81,11 @@ class Order extends Template
         return $city.$street.$street2;
     }
 
+    /**
+     * Get Store Name
+     *
+     * @return mixed
+     */
     public function getStoreName()
     {
         return $this->scopeConfig->getValue('general/store_information/name');

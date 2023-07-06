@@ -5,11 +5,16 @@
             <block class="CommunityEngineering\JapaneseInvoice\Block\Info\Order" name="registration_number" after="order.date" template="CommunityEngineering_JapaneseInvoice::registration_number.phtml"/>
         </referenceContainer>
         <referenceBlock name="creditmemo_totals">
+            <arguments>
+                <argument name="label_properties" xsi:type="string">colspan="7" class="mark"</argument>
+                <argument name="value_properties" xsi:type="string">class="amount"</argument>
+            </arguments>
             <referenceBlock name="tax" remove="true"/>
             <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\Creditmemo\Subtotal" name="creditmemo_subtotal" template="CommunityEngineering_JapaneseInvoice::creditmemo/subtotal.phtml" after="-"/>
         </referenceBlock>
         <referenceBlock name="additional.product.info">
             <block class="CommunityEngineering\JapaneseInvoice\Block\Sales\Order\ReductionRateSign" name="reduction.rate.sign" template="CommunityEngineering_JapaneseInvoice::reduction_rate_sign.phtml"/>
         </referenceBlock>
+        <referenceBlock name="creditmemo_items" template="CommunityEngineering_JapaneseInvoice::creditmemo/items.phtml" />
     </body>
 </page>

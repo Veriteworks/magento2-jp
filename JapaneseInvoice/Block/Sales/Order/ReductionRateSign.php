@@ -26,6 +26,15 @@ class ReductionRateSign extends Template
      */
     private $config;
 
+    /**
+     * Constructor.
+     *
+     * @param CollectionFactory $collectionFactory
+     * @param TaxRateRepositoryInterface $taxRateRepository
+     * @param ReductionTaxRateId $config
+     * @param Template\Context $context
+     * @param array $data
+     */
     public function __construct(
         CollectionFactory $collectionFactory,
         TaxRateRepositoryInterface $taxRateRepository,
@@ -40,7 +49,10 @@ class ReductionRateSign extends Template
     }
 
     /**
+     * Show Reduction Rate Sign
+     *
      * @return string
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function showReductionRateSign()
     {

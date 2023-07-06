@@ -12,7 +12,6 @@ use Magento\Customer\Model\Group;
 
 class Shipping
 {
-
     /**
      * @var Order
      */
@@ -23,10 +22,16 @@ class Shipping
      */
     private $scopeConfig;
 
+    /**
+     * @var TaxRateManagementInterface
+     */
     private $taxRateManagement;
 
     /**
+     * Constructor
+     *
      * @param ScopeConfigInterface $scopeConfig
+     * @param TaxRateManagementInterface $taxRateManagement
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
@@ -36,6 +41,12 @@ class Shipping
         $this->taxRateManagement = $taxRateManagement;
     }
 
+    /**
+     * Collect
+     *
+     * @param array $result
+     * @return void
+     */
     public function collect(array &$result)
     {
         $baseShippingAmount = $this->source->getBaseShippingAmount();
@@ -47,15 +58,25 @@ class Shipping
         $customerGroupId = $this->source->getCustomerGroupId() ?: Group::NOT_LOGGED_IN_ID;
         $taxRates = $this->taxRateManagement->getRatesByCustomerAndProductTaxClassId($customerGroupId, $taxClassId);
         //todo: get tax rate
-
     }
 
+    /**
+     * Set Source
+     *
+     * @param mixed $source source
+     * @return $this
+     */
     public function setSource($source)
     {
         $this->source = $source;
         return $this;
     }
 
+    /**
+     * Get tax class id
+     *
+     * @return mixed
+     */
     private function getTaxClassId()
     {
         $configuredValue = $this->scopeConfig->getValue(
