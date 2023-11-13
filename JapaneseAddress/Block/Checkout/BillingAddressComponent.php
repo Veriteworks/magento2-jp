@@ -41,7 +41,7 @@ class BillingAddressComponent implements LayoutProcessorInterface
     public function process($jsLayout)
     {
         $locale = $this->getStoreLocale();
-        if($locale != 'ja_JP') {
+        if($locale !== 'ja_JP') {
             return $jsLayout;
         }
         if (!isset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step'])) {

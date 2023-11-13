@@ -13,7 +13,6 @@
             <module name="Magento_Sales"/>
             <module name="Magento_Directory"/>
             <module name="Magento_CheckoutAddressSearch" />
-            <module name="Magento_CheckoutStaging" />
             <module name="CommunityEngineering_JapaneseName"/>
         </sequence>
     </module>

@@ -23,6 +23,9 @@ var config = {
             },
             'Magento_Customer/js/model/customer/address': {
                 'CommunityEngineering_JapaneseName/js/address/kana-accessors': true
+            },
+            'Magento_Checkout/js/action/create-billing-address' : {
+                'CommunityEngineering_JapaneseName/js/checkout/action/set-kana-as-extension-attributes': true
             }
         }
     }

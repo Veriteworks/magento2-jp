@@ -24,7 +24,7 @@ class Builder extends DefaultBuilder
                 'type' => 'kuromoji_tokenizer',
                 'mode'=> 'search',
                 'discard_punctuation'=> 'true',
-                'user_dictionary' => 'search_dic.csv'
+                //'user_dictionary' => 'search_dic.csv'
             ],
         ];
         return $tokenizer;
