@@ -23,7 +23,7 @@ define([
         var attrCode = address.customAttributes[attr]['attribute_code'];
 
         if (attrCode === 'firstnamekana' || attrCode === 'lastnamekana') {
-            address['extension_attributes'][attrCode] = address.customAttributes[attr].value;
+            address.extensionAttributes[attrCode] = address.customAttributes[attr].value;
         }
     };
 
@@ -40,14 +40,17 @@ define([
                     return;
                 }
 
-                if (address['extension_attributes'] === undefined) {
-                    address['extension_attributes'] = {};
+                if (typeof address.extensionAttributes === 'undefined') {
+                    address.extensionAttributes = {};
                 }
 
                 for (attr in  address.customAttributes) {
                     if (address.customAttributes.hasOwnProperty(attr)) {
                         addKanaExtensionAttribute(address, attr);
                     }
+                }
+                if (typeof address.customAttributes === 'undefined') {
+                    address.customAttributes = {};
                 }
             });
 

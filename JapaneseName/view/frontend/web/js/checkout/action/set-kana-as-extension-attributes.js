@@ -23,7 +23,7 @@ define([
         var attrCode = address.customAttributes[attr]['attribute_code'];
 
         if (attrCode === 'firstnamekana' || attrCode === 'lastnamekana') {
-            address['extension_attributes'][attrCode] = address.customAttributes[attr].value;
+            address.extensionAttributes[attrCode] = address.customAttributes[attr].value;
         }
     };
 
@@ -36,8 +36,8 @@ define([
             var processedAddress = originalAction();
             var attr;
 
-            if (processedAddress['extension_attributes'] === undefined) {
-                processedAddress['extension_attributes'] = {};
+            if (typeof processedAddress.extensionAttributes === 'undefined') {
+                processedAddress.extensionAttributes = {};
             }
 
             for (attr in  processedAddress.customAttributes) {
