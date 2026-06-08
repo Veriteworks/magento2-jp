@@ -39,6 +39,7 @@ class RoundTaxAmount
         Total $total
     ) {
         $baseCurrency = $quote->getBaseCurrencyCode();
+
         if ($baseCurrency === null) {
             $baseCurrency = $quote->getStore()->getBaseCurrencyCode();
         }

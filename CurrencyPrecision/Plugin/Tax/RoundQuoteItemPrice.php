@@ -42,6 +42,7 @@ class RoundQuoteItemPrice
     ) {
         $quote = $quoteItem->getQuote();
         $baseCurrency = $quote->getBaseCurrencyCode();
+
         if ($baseCurrency === null) {
             $baseCurrency = $quote->getStore()->getBaseCurrencyCode();
         }

@@ -39,6 +39,7 @@ class RoundSubtotal
         Total $total
     ) {
         $baseCurrency = $quote->getBaseCurrencyCode();
+
         if ($baseCurrency === null) {
             $baseCurrency = $quote->getStore()->getBaseCurrencyCode();
         }
@@ -57,6 +58,7 @@ class RoundSubtotal
         $address->setBaseSubtotalTotalInclTax($total->getBaseSubtotalInclTax());
         $address->setBaseSubtotal($total->getBaseSubtotal());
         $address->setBaseTaxAmount($total->getBaseTaxAmount());
+
         return $result;
     }
 

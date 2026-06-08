@@ -69,6 +69,11 @@ class KanaAttributes implements DataPatchInterface
                     $attributeOptions = array_merge($attributeOptions, $entityAspect['attributes'][$attributeCode]);
                 }
                 $customerSetup->addAttribute($entityType, $attributeCode, $attributeOptions);
+                // Reload EAV config from DB: a stale attribute cache entry (e.g. left over
+                // from an earlier failed upgrade attempt, before the attribute existed) would
+                // otherwise yield an attribute object with no attribute_id, causing save()
+                // below to attempt an INSERT and collide with the row addAttribute() just wrote.
+                $customerSetup->getEavConfig()->clear();
                 $attribute = $customerSetup->getEavConfig()->getAttribute($entityType, $attributeCode);
                 $attribute->setData('used_in_forms', $entityAspect['used_in_forms']);
                 $this->attributeResource->save($attribute);

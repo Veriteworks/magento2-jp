@@ -10,6 +10,7 @@ namespace CommunityEngineering\CurrencyPrecision\Test\Unit\Model;
 use CommunityEngineering\CurrencyPrecision\Model\Config\CurrencyRoundingConfig;
 use CommunityEngineering\CurrencyPrecision\Model\Config\Source\RoundingMode;
 use CommunityEngineering\CurrencyPrecision\Model\CurrencyRounding;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,9 +23,7 @@ class CurrencyRoundingTest extends TestCase
      */
     public function testGetCurrencyPrecision($currencyCode, $expectedPrecision)
     {
-        $config = $this->getMockBuilder(CurrencyRoundingConfig::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $config = $this->createStub(CurrencyRoundingConfig::class);
 
         $currencyPrecision = new CurrencyRounding($config);
         $actualPrecision = $currencyPrecision->getPrecision($currencyCode);
@@ -40,9 +39,7 @@ class CurrencyRoundingTest extends TestCase
         float $amount,
         float $expectedResult
     ) {
-        $config = $this->getMockBuilder(CurrencyRoundingConfig::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $config = $this->createStub(CurrencyRoundingConfig::class);
         $config->method('getRoundingMode')
             ->willReturn($roundingMode);
 
@@ -57,7 +54,7 @@ class CurrencyRoundingTest extends TestCase
      *
      * @return array
      */
-    public function currencyPrecisions(): array
+    public static function currencyPrecisions(): array
     {
         return [
             ['USD', 2],
@@ -70,7 +67,7 @@ class CurrencyRoundingTest extends TestCase
      *
      * @return array
      */
-    public function roundingExamples(): array
+    public static function roundingExamples(): array
     {
         return [
             ['USD', RoundingMode::UP, 1111.237, 1111.24],

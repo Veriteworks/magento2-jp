@@ -60,7 +60,7 @@ class CurrencyRounding
         $formatter = $this->createCurrencyFormatter($currencyCode);
         $formatter->setAttribute(\NumberFormatter::ROUNDING_MODE, $roundingMode);
 
-        $formatted = $formatter->format($amount);
+        $formatted = $formatter->formatCurrency($amount, $currencyCode);
         $rounded = $formatter->parse($formatted, \NumberFormatter::TYPE_DOUBLE);
         return $rounded;
     }
@@ -73,7 +73,10 @@ class CurrencyRounding
      */
     private function createCurrencyFormatter(string $currencyCode): \NumberFormatter
     {
-        return new \NumberFormatter('@currency=' . $currencyCode, \NumberFormatter::CURRENCY);
+        if ($currencyCode === 'JPY') {
+            return new \NumberFormatter('ja_JP', \NumberFormatter::CURRENCY);
+        }
+        return new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
     }
 
     /**

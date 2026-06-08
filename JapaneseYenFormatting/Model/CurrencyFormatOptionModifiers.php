@@ -45,7 +45,7 @@ class CurrencyFormatOptionModifiers
                 return [];
             case YenFormatting::KANJI:
                 return [
-                    'position' => \Zend_Currency::RIGHT,
+                    'position' => \Magento\Framework\Currency::RIGHT,
                     'symbol' => __('Yen'),
                 ];
             default:
