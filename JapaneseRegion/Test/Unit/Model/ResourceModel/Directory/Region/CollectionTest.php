@@ -33,7 +33,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     /**
      * Locale resolver
      *
-     * @var ResolverInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ResolverInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     private $localeResolverMock;
 
@@ -42,36 +42,21 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp() :void
     {
-        $entityFactoryMock = $this->getMockBuilder(EntityFactory::class)->disableOriginalConstructor()->getMock();
-        $loggerMock = $this->getMockBuilder(LoggerInterface::class)->disableOriginalConstructor()->getMock();
-        $fetchStrategyMock = $this->getMockBuilder(FetchStrategyInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $eventManagerMock = $this->getMockBuilder(ManagerInterface::class)->disableOriginalConstructor()->getMock();
-        $this->localeResolverMock = $this->getMockBuilder(ResolverInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $connectionMock = $this->getMockBuilder(Mysql::class)->disableOriginalConstructor()->getMock();
-        $resourceMock = $this->getMockForAbstractClass(
-            AbstractDb::class,
-            [],
-            '',
-            false,
-            true,
-            true,
-            ['getConnection', 'getMainTable', 'getTable', '__wakeup']
-        );
+        $entityFactoryMock = $this->createStub(EntityFactory::class);
+        $loggerMock = $this->createStub(LoggerInterface::class);
+        $fetchStrategyMock = $this->createStub(FetchStrategyInterface::class);
+        $eventManagerMock = $this->createStub(ManagerInterface::class);
+        $this->localeResolverMock = $this->createStub(ResolverInterface::class);
+        $connectionMock = $this->createStub(Mysql::class);
+        $resourceMock = $this->createStub(AbstractDb::class);
 
-        $selectMock = $this->getMockBuilder(Select::class)->disableOriginalConstructor()->getMock();
-        $connectionMock->expects($this->any())
-            ->method('select')
-            ->will($this->returnValue($selectMock));
-        $resourceMock->expects($this->any())
-            ->method('getConnection')
-            ->will($this->returnValue($connectionMock));
-        $resourceMock->expects($this->any())
-            ->method('getTable')
-            ->will($this->returnArgument(0));
+        $selectMock = $this->createStub(Select::class);
+        $connectionMock->method('select')
+            ->willReturn($selectMock);
+        $resourceMock->method('getConnection')
+            ->willReturn($connectionMock);
+        $resourceMock->method('getTable')
+            ->willReturnArgument(0);
 
         $this->collection = new Collection(
             $entityFactoryMock,
@@ -93,7 +78,6 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     public function testToOptionArrayForJp()
     {
         $this->localeResolverMock
-            ->expects($this->any())
             ->method('getLocale')
             ->willReturn('ja_JP');
 
@@ -147,7 +131,6 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     public function testToOptionArrayForEn()
     {
         $this->localeResolverMock
-            ->expects($this->any())
             ->method('getLocale')
             ->willReturn('en_US');
 
